@@ -1,0 +1,162 @@
+/* ================= HEADER WRAPPER ================= */
+
+.header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ================= TOP BAR ================= */
+
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ================= LEFT SECTION ================= */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  height: 36px;
+  cursor: pointer;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+}
+
+.nav-links span:hover {
+  color: #2563eb;
+}
+
+/* ================= RIGHT SECTION ================= */
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ================= MY BOOKINGS ================= */
+
+.my-bookings-btn {
+  background: #f4c430;
+  color: #000;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(244, 196, 48, 0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.my-bookings-btn:hover {
+  background: #eab308;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
+}
+
+/* ================= CART ================= */
+
+.cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ================= USER MENU ================= */
+
+.user-menu {
+  position: relative;
+}
+
+.user-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.user-circle:hover {
+  background: #e5e7eb;
+}
+
+/* DROPDOWN */
+
+.dropdown {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  min-width: 140px;
+  z-index: 1001;
+}
+
+.dropdown p {
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.dropdown p:hover {
+  background: #f3f4f6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .header-top {
+    padding: 12px 16px;
+  }
+}

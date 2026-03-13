@@ -1,0 +1,87 @@
+.tabs-wrapper {
+  padding: 12px 0;
+  background: #fff;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+  border-bottom: 1px solid #f0f0f0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tabs-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  padding: 0 20px;
+  justify-content: center;
+  /* Center tabs on desktop */
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .tabs-container {
+    justify-content: flex-start;
+    /* Fallback to left-align when they overflow */
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs-wrapper {
+    top: 64px;
+    /* Match mobile header height */
+  }
+
+  .tabs-container {
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 12px 0 12px;
+    -webkit-overflow-scrolling: touch;
+    /* Smooth touch scrolling for iOS */
+  }
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-item {
+  padding: 10px 2px;
+  cursor: pointer;
+  color: #888;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  user-select: none;
+  flex-shrink: 0;
+  /* Prevent tabs from squishing */
+}
+
+@media (max-width: 768px) {
+  .tab-item {
+    font-size: 14px;
+    padding: 8px 2px;
+  }
+}
+
+.tab-item:hover {
+  color: #333;
+}
+
+.tab-item.active {
+  color: #000;
+  font-weight: 600;
+  border-bottom: 2px solid #f4c430;
+}
+
+/* Hide the old segmented control styles if any remained */
+.category-tabs {
+  margin: 0;
+}

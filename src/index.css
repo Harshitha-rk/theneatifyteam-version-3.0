@@ -1,0 +1,251 @@
+/* ================= AUTH PAGES ================= */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+}
+
+.auth-card {
+  width: 380px;
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background: #222;
+}
+
+.auth-link {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.auth-link span {
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .auth-card {
+    width: 90%;
+  }
+}
+
+/* Google login button */
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ================= AUTH PAGES PADDING FIX ================= */
+.auth-input {
+  padding: 14px 16px;
+  /* uniform padding inside inputs */
+  box-sizing: border-box;
+  /* ensures width includes padding */
+}
+
+/* ================= PROFILE PAGE PADDING FIX ================= */
+.profile-details p {
+  padding-left: 4px;
+  /* slight left padding for text alignment */
+}
+
+.profile-details strong {
+  padding-right: 2px;
+  /* ensures labels and values align neatly */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Universal box-sizing so nothing ever breaks out of its container */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------
+   GLOBAL MOBILE / RESPONSIVE HELPERS
+   These rules apply to every page and ensure the app
+   collapses gracefully on phones. Additional breakpoints
+   can be added as needed.
+   -------------------------------------------------- */
+
+/* make images/shadows flexible */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* container helper class that many pages use */
+.container,
+.page,
+.booking-container,
+.profile-container,
+.checkout-container,
+.payment-container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* default button full width on small screens */
+.view-service-btn,
+.auth-button,
+.success-btn,
+.back-btn-circle {
+  width: auto;
+}
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  /* stack service grid into two columns */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* single-column layouts */
+  .services-grid,
+  .booking-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* make hero section shorter on phones */
+  .hero {
+    height: auto;
+    min-height: 160px;
+  }
+
+  /* collapse header nav into hamburger (if not already) */
+  .header-links {
+    display: none;
+  }
+
+  /* force buttons full width for easier tapping */
+  .view-service-btn,
+  .auth-button,
+  .success-btn {
+    width: 100%;
+  }
+
+  /* padding adjustments on pages */
+  .booking-container {
+    padding: 24px 16px;
+  }
+
+  .calendar-section,
+  .time-section {
+    width: 100%;
+  }
+
+  .row,
+  .scheduler-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* tiniest screens – hide extra margins */
+  .booking-container,
+  .checkout-container {
+    padding: 16px 12px;
+  }
+
+  .back-btn-circle {
+    top: 20px;
+    left: 10px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .services-section-title,
+  .section-title,
+  .category-title {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}

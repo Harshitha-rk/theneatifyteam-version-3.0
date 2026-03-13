@@ -1,0 +1,235 @@
+.footer {
+  position: relative;
+  background:
+    radial-gradient(900px 400px at 90% 30%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%),
+    linear-gradient(180deg, #0b1224, #020617);
+  color: #ffffff;
+  padding: 72px 80px 28px;
+  overflow: hidden;
+}
+
+/* MAIN GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+/* LEFT */
+.footer-left h2 {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.footer-left p {
+  color: #94a3b8;
+  line-height: 1.7;
+  max-width: 440px;
+  font-size: 15.5px;
+}
+
+/* CENTER */
+.footer-center h3 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.contact-item svg {
+  font-size: 20px;
+  color: #94a3b8;
+}
+
+.contact-item a,
+.contact-item span {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* SOCIAL LINKS */
+.footer-social-inline {
+  margin-top: 26px;
+}
+
+.footer-social-inline-title {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #e5e7eb;
+}
+
+.footer-social-inline-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-social-inline-icons a {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #020617;
+  font-size: 18px;
+
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+/* INSTAGRAM */
+.footer-social-inline-icons a:nth-child(1):hover {
+  background: radial-gradient(circle at 30% 107%,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* FACEBOOK */
+.footer-social-inline-icons a:nth-child(2):hover {
+  background: #1877f2;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* WHATSAPP */
+.footer-social-inline-icons a:nth-child(3):hover {
+  background: #25d366;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* RIGHT */
+.footer-right {
+  position: relative;
+  height: 100%;
+}
+
+.footer-logo-box {
+  position: absolute;
+  bottom: 0;
+  right: -20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-logo {
+  max-height: 350px;
+  object-fit: contain;
+  transform: translateY(60px);
+  filter:
+    drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 22px rgba(255, 200, 80, 0.12));
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer {
+    padding: 60px 24px 32px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-left h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .footer-left p {
+    margin: 0 auto;
+    font-size: 14.5px;
+  }
+
+  .footer-center h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .contact-item {
+    justify-content: center;
+    font-size: 15px;
+    gap: 10px;
+  }
+
+  .footer-social-inline {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-social-inline-icons {
+    justify-content: center;
+  }
+
+  .footer-right {
+    position: static;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-logo-box {
+    position: static;
+    justify-content: center;
+  }
+
+  .footer-logo {
+    transform: none;
+    max-height: 180px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  }
+
+  .footer-bottom {
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    font-size: 13px;
+  }
+}

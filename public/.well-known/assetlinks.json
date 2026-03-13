@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.theneatifyteam.app",
+            "sha256_cert_fingerprints": [
+                "CF:F6:50:26:DD:E3:21:D1:CE:92:73:DA:0D:CA:E6:9F:C3:EC:77:AA:42:2A:98:13:C1:A1:E6:AF:4D:75:D0:CB"
+            ]
+        }
+    }
+]

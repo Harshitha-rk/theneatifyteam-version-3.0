@@ -1,0 +1,15 @@
+{
+  "short_name": "The Neatify Team",
+  "name": "The Neatify Team",
+  "icons": [
+    {
+      "src": "assets/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f4c430",
+  "background_color": "#ffffff"
+}

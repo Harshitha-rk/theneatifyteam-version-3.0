@@ -1,0 +1,177 @@
+/* ================= CONTAINER ================= */
+
+.booking-details-container {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ================= TITLE ================= */
+
+.booking-details-container h2 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* ================= DETAILS CARD ================= */
+
+.details-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+/* ================= TEXT ================= */
+
+.details-card p {
+  margin: 6px 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+.details-card strong {
+  color: #111827;
+}
+
+/* ================= DIVIDER ================= */
+
+.details-card hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 20px 0;
+}
+
+/* ================= SERVICES ================= */
+
+.details-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.service-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background-color: #fafafa;
+}
+
+.service-box p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-link {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2563eb;          /* nice link blue */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+/* ================= TOP LEFT BACK BUTTON ================= */
+
+.back-btn.top-left {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-btn.top-left:hover {
+  text-decoration: underline;
+}
+
+/* Ensure container can position child */
+.booking-details-container {
+  position: relative;
+}
+
+
+/* ================= STATES ================= */
+
+.empty,
+.loading {
+  text-align: center;
+  margin-top: 60px;
+  color: #6b7280;
+  font-size: 15px;
+}
+/* ================= PAGE WRAPPER FOR TOP BACK BUTTON ================= */
+
+.booking-details-wrapper {
+  position: relative;
+  max-width: 750px;
+  margin: 40px auto;
+  padding-top: 48px; /* space above heading */
+}
+
+/* ================= SCHEDULER STYLE BACK BUTTON ================= */
+
+.back-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-arrow:hover {
+  background: #f9fafb;
+}
+/* ================= STATUS PILL (RIGHT SIDE) ================= */
+
+.booking-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* COMMON STATUS STYLE */
+.status-pill {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+/* COMPLETED → GREEN */
+.status-completed {
+  background-color: #dcfce7; /* light green */
+  color: #166534;            /* dark green text */
+}
+
+/* PENDING → YELLOW */
+.status-pending {
+  background-color: #fef3c7; /* light yellow */
+  color: #92400e;            /* dark yellow/brown text */
+}

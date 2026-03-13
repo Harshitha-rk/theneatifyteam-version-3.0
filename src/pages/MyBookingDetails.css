@@ -1,0 +1,117 @@
+/* ================= CONTAINER ================= */
+
+.booking-details-container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #f9fafb;
+  padding-top: 90px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+/* ================= CARD ================= */
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  background-color: #fff;
+}
+
+/* ================= SERVICE ROW ================= */
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 0;
+}
+
+.service-row:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ================= ROW ================= */
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= TEXT ================= */
+
+.bold {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #374151;
+  margin: 4px 0;
+}
+
+/* ✅ PAYMENT STATUS (MATCHES MOBILE UI) */
+.card p:last-child {
+  font-size: 13px;
+  color: #16a34a;
+  /* green */
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ================= BUTTON ================= */
+
+.back-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background-color: #f4c430;
+  color: #000;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(244, 196, 48, 0.25);
+}
+
+.back-btn:hover {
+  background-color: #eab308;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 196, 48, 0.35);
+}
+
+/* ================= STATES ================= */
+
+.loading,
+.empty {
+  text-align: center;
+  margin-top: 60px;
+  color: #6b7280;
+  font-size: 15px;
+}

@@ -1,0 +1,615 @@
+/* ================= PAGE BACKGROUND ================= */
+
+body {
+  background-color: #f8fafc;
+}
+
+/* ================= CONTAINER ================= */
+
+.booking-details-container {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 28px;
+  /* Reset padding to standard since button is no longer absolute */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+/* ================= TEXT STATES ================= */
+
+.empty,
+.loading {
+  text-align: center;
+  margin-top: 60px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* ================= SECTION HEADINGS ================= */
+
+.section {
+  margin-top: 26px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ================= CARD ================= */
+
+.card {
+  border: 1px solid #e6e9ef;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  margin-bottom: 14px;
+}
+
+/* ================= SERVICE ROW ================= */
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.service-row p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+/* ================= ROW ================= */
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= STATUS PILL ================= */
+
+.status-container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* COMPLETED */
+.status-completed {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #166534;
+  border-color: rgba(22, 101, 52, 0.1);
+  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);
+}
+
+/* PENDING / SCHEDULED */
+.status-pending {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+  border-color: rgba(146, 64, 14, 0.1);
+  box-shadow: 0 4px 12px rgba(146, 64, 14, 0.08);
+}
+
+/* ASSIGNED */
+.status-assigned {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  color: #1d4ed8;
+  border-color: rgba(29, 78, 216, 0.1);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.08);
+}
+
+/* CANCELLED / FAILED */
+.status-cancelled,
+.status-failed {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #b91c1c;
+  border-color: rgba(185, 28, 28, 0.1);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.08);
+}
+
+/* REFUNDED */
+.status-refunded {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #374151;
+  border-color: rgba(55, 65, 81, 0.1);
+  box-shadow: 0 4px 12px rgba(55, 65, 81, 0.08);
+}
+
+/* ================= OTP ================= */
+
+.otp-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.otp-box {
+  flex: 1;
+  background-color: #fef3c7;
+  border: 2px solid #fbbf24;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.otp-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  margin-bottom: 6px;
+}
+
+.otp-code {
+  font-size: 22px;
+  font-weight: 800;
+  color: #78350f;
+  letter-spacing: 2px;
+}
+
+/* ================= TOP BACK BUTTON (YELLOW THEME) ================= */
+.back-btn-top {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  padding: 10px 24px;
+  background: #f4c430;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(244, 196, 48, 0.2);
+  z-index: 10;
+}
+
+.back-btn-top:hover {
+  background: #eab308;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
+}
+
+.back-btn-top svg {
+  font-size: 16px;
+}
+
+/* ================= ACTION BUTTONS (CLEANUP) ================= */
+.actions-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 10px;
+}
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 40px 36px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+/* ================= FEEDBACK TITLE ================= */
+
+.modal h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: #0f172a;
+}
+
+/* ================= STAR RATING ================= */
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.rating-stars span {
+  font-size: 34px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rating-stars span:hover {
+  transform: scale(1.2);
+}
+
+.star-active {
+  color: #facc15;
+}
+
+.star-inactive {
+  color: #e5e7eb;
+}
+
+/* ================= TEXTAREA ================= */
+
+.modal textarea {
+  width: 100%;
+  min-height: 90px;
+  border-radius: 16px;
+  border: 1.5px solid #e5e7eb;
+  padding: 10px 12px;
+  font-size: 15px;
+  resize: none;
+  transition: all 0.25s ease;
+  background: #fafafa;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.modal textarea:focus {
+  outline: none;
+  border-color: #f39c12;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.15);
+}
+
+/* ================= MODAL BUTTONS ================= */
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.modal-actions button {
+  background: #f3f4f6;
+  color: #374151;
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.modal-actions button:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Cancel */
+.modal-actions button:first-child {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.modal-actions button:first-child:hover {
+  background: #e5e7eb;
+}
+
+/* Save */
+.modal-actions button:last-child {
+  background: #f4c430;
+  color: #000;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(244, 196, 48, 0.25);
+}
+
+.modal-actions button:last-child:hover {
+  background: #eab308;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(244, 196, 48, 0.35);
+}
+
+.modal-actions button:last-child:active {
+  transform: translateY(0);
+}
+
+.modal {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 40px 36px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  position: relative;
+  /* ✅ VERY IMPORTANT */
+}
+
+/* CLOSE BUTTON */
+.modal-close-x {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.modal-close-x:hover {
+  background: #e2e8f0;
+  color: #000;
+  transform: rotate(90deg);
+}
+
+/* ===== EDIT FEEDBACK BUTTON ===== */
+
+.edit-feedback-btn {
+  margin-top: 14px;
+  padding: 10px 24px;
+  background: #f4c430;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(244, 196, 48, 0.25);
+}
+
+.edit-feedback-btn:hover {
+  background: #eab308;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(244, 196, 48, 0.35);
+}
+
+.edit-feedback-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ================= CANCEL BUTTON ================= */
+.cancel-btn {
+  padding: 12px 30px;
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================= CANCELLED BOX ================= */
+.cancelled-box {
+  margin-top: 16px;
+  padding: 14px;
+  background-color: #fff1f2;
+  border: 1px solid #fda4af;
+  border-radius: 12px;
+  color: #e11d48;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ================= CANCEL MODAL SPECIFIC ================= */
+.modal-icon-cancel {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+.warning-icon-cancel {
+  background-color: #fff7ed;
+  color: #f97316;
+}
+
+.modal-subtitle-cancel {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.form-group-cancel {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.modal-label-cancel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.modal-textarea-cancel {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  resize: none;
+  background: #f8fafc;
+}
+
+.modal-textarea-cancel:focus {
+  outline: none;
+  border-color: #f97316;
+  background: #fff;
+}
+
+.modal-actions-cancel {
+  display: flex;
+  gap: 12px;
+}
+
+.secondary-btn-cancel {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border: none;
+  color: #475569;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.danger-btn-cancel {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #ef4444;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.danger-btn-cancel:hover {
+  background: #dc2626;
+}
+
+/* ================= SUCCESS MODAL SPECIFIC ================= */
+.modal-icon-success {
+  width: 64px;
+  height: 64px;
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  border: 2px solid #bbf7d0;
+}
+
+.checkmark-icon {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.modal-subtitle-success {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.success-btn {
+  width: 100%;
+  padding: 14px;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.success-btn:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .booking-details-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .modal {
+    padding: 30px 22px;
+  }
+
+  .rating-stars span {
+    font-size: 30px;
+  }
+
+  .back-btn-top {
+    padding: 8px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* force details section into single column */
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-details-container {
+    padding: 16px;
+  }
+}
