@@ -5,16 +5,31 @@ export const createOrder = async (amount, bookingId) => {
   try {
     const cleanAmount = parseFloat(amount);
 
-    const { data, error } = await supabase.functions.invoke("create-razorpay-order", {
-      body: {
+    const session = await supabase.auth.getSession();
+    const token = session.data.session?.access_token;
+
+    const response = await fetch(`${process.env.REACT_APP_SUPABASE_URL}/functions/v1/create-razorpay-order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token || process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+        "apikey": process.env.REACT_APP_SUPABASE_ANON_KEY
+      },
+      body: JSON.stringify({
         booking_id: bookingId,
         amount: cleanAmount,
-      },
+      })
     });
 
-    if (error || !data || !data.order_id) {
-      const errorMsg = error?.message || data?.error || "INVALID_ORDER_RESPONSE";
-      throw new Error(errorMsg);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Edge Function Error ${response.status}: ${errorText}`);
+    }
+
+    const data = await response.json();
+
+    if (!data || !data.order_id) {
+      throw new Error("INVALID_ORDER_RESPONSE");
     }
 
     return {

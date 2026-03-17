@@ -218,6 +218,8 @@ export default function ServiceDetail({ user }) {
       .select(
         "id, title, duration, price, original_price, discount_percent, image, work_includes, description, work_not_included, service_type, max_quantity"
       )
+      .eq("service_type", service.service_type?.toUpperCase())
+      .not("image", "is", null)
       .order("sort_order", { ascending: true })
       .then(({ data }) => {
         if (data) {
@@ -553,7 +555,7 @@ export default function ServiceDetail({ user }) {
               </div>
 
               <div className="modal-footer">
-                {true && (
+                {addOns.length > 0 && (
                   <button
                     className="add-service-btn"
                     onClick={() => {

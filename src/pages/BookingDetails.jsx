@@ -22,7 +22,7 @@ export default function BookingDetails() {
   const toast = useToast();
 
   const [booking, setBooking] = useState(null);
-  const [staffName, setStaffName] = useState("");
+  const [staffDetails, setStaffDetails] = useState({ name: "", phone: "" });
   const [loading, setLoading] = useState(true);
 
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
@@ -78,32 +78,32 @@ export default function BookingDetails() {
               // 1. Check staff_profile
               const { data: sProfile } = await supabase
                 .from("staff_profile")
-                .select("full_name")
+                .select("full_name, phone, phone_number")
                 .eq("email", email)
                 .maybeSingle();
-              if (sProfile?.full_name) return sProfile.full_name;
+              if (sProfile?.full_name) return { name: sProfile.full_name, phone: sProfile.phone || sProfile.phone_number || "" };
 
               // 2. Check signup table
               const { data: sSignup } = await supabase
                 .from("signup")
-                .select("full_name")
+                .select("full_name, phone, phone_number")
                 .eq("email", email)
                 .maybeSingle();
-              if (sSignup?.full_name) return sSignup.full_name;
+              if (sSignup?.full_name) return { name: sSignup.full_name, phone: sSignup.phone || sSignup.phone_number || "" };
 
               // 3. Fallback: Extract from email (ravi@gmail.com -> Ravi)
               const prefix = email.split("@")[0];
-              return prefix.charAt(0).toUpperCase() + prefix.slice(1);
+              return { name: prefix.charAt(0).toUpperCase() + prefix.slice(1), phone: "" };
             } catch (err) {
               console.error("Staff fetch error:", err);
               return null;
             }
           };
 
-          const name = await fetchStaffName(data.assigned_staff_email);
-          if (name) setStaffName(name);
+          const details = await fetchStaffName(data.assigned_staff_email);
+          if (details) setStaffDetails(details);
         } else {
-          setStaffName("");
+          setStaffDetails({ name: "", phone: "" });
         }
 
         if (data.work_status?.toUpperCase() === "COMPLETED") {
@@ -333,8 +333,10 @@ export default function BookingDetails() {
                   <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: '#166534', fontWeight: '600' }}>
                     <span>✓</span> Staff Assigned
                   </div>
-                  <p className="bold">{staffName || "Loading..."}</p>
-                  <p style={{ color: '#6b7280', fontSize: '14px' }}>{booking.assigned_staff_email}</p>
+                  <p className="bold">{staffDetails.name || "Loading..."}</p>
+                  {staffDetails.phone && (
+                    <p style={{ color: '#6b7280', fontSize: '14px' }}>{staffDetails.phone}</p>
+                  )}
 
                   {/* OTP SECTION INSIDE STAFF CARD */}
                   <div className="otp-container" style={{ marginTop: '20px', borderTop: '1px solid #f3f4f6', paddingTop: '20px' }}>

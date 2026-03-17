@@ -11,14 +11,13 @@ import "./Booking.css";
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const FULL_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const YEARS = [2026, 2027, 2028];
-
-const TIMES = [
+const DEFAULT_TIMES = [
   "9:00 am", "9:30 am", "10:00 am", "10:30 am",
   "11:00 am", "11:30 am", "12:00 pm", "12:30 pm",
   "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm",
   "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm"
 ];
+const DEFAULT_YEARS = [2026, 2027, 2028];
 
 const today = new Date();
 
@@ -31,6 +30,7 @@ const isPastDate = (y, m, d) => {
 
 /* ================= TIME PARSER ================= */
 const timeToMinutes = (time) => {
+  if (!time || typeof time !== "string") return 0;
   const [t, meridiem] = time.split(" ");
   let [h, m] = t.split(":").map(Number);
 
@@ -85,6 +85,42 @@ export default function Booking({ user }) {
   const location = useLocation();
   const toast = useToast();
   const [selectedServices, setSelectedServices] = useState(location.state?.services || []);
+
+  /* ================= SCHEDULE CONFIG STATE ================= */
+  const [TIMES, setTimes] = useState(DEFAULT_TIMES);
+  const [YEARS, setYears] = useState(DEFAULT_YEARS);
+
+  /* ================= FETCH SCHEDULE CONFIG ================= */
+  useEffect(() => {
+    supabase
+      .from("schedule_config")
+      .select("config_key, config_value")
+      .then(({ data }) => {
+        if (!data) return;
+        data.forEach(({ config_key, config_value }) => {
+          // Supabase JSONB can come back as a parsed object OR as a raw JSON string
+          let parsed = config_value;
+          if (typeof parsed === "string") {
+            try { parsed = JSON.parse(parsed); } catch (e) { parsed = null; }
+          }
+
+          if (config_key === "time_slots") {
+            const arr = Array.isArray(parsed) ? parsed : [];
+            // Each item is { value: "9:00 am", active: true }
+            const slots = arr
+              .filter(item => item?.active !== false)
+              .map(item => (typeof item === "string" ? item : item?.value))
+              .filter(v => typeof v === "string" && v.trim().length > 0);
+            if (slots.length > 0) setTimes(slots);
+          }
+          if (config_key === "years") {
+            const arr = Array.isArray(parsed) ? parsed : [];
+            const yrs = arr.map(Number).filter(Boolean);
+            if (yrs.length > 0) setYears(yrs);
+          }
+        });
+      });
+  }, []);
 
   /* ================= ADD-ONS STATE ================= */
   const [addOns, setAddOns] = useState([]);
@@ -195,6 +231,8 @@ export default function Booking({ user }) {
     supabase
       .from("add_ons")
       .select("id, title, duration, price, original_price, discount_percent, image, work_includes, description, work_not_included, service_type, max_quantity")
+      .eq("service_type", selectedServices[0]?.service_type?.toUpperCase())
+      .not("image", "is", null)
       .order("sort_order", { ascending: true })
       .then(({ data }) => {
         if (data) {
@@ -425,7 +463,7 @@ export default function Booking({ user }) {
                 </div>
               ))}
 
-              {true && (
+              {addOns.length > 0 && (
                 <button
                   className="add-more-services-btn"
                   onClick={() => setShowAddService(true)}

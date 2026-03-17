@@ -18,7 +18,7 @@ export default function CompletedBookings() {
 
 
   const [booking, setBooking] = useState(null);
-  const [staffName, setStaffName] = useState("");
+  const [staffDetails, setStaffDetails] = useState({ name: "", phone: "" });
   const [review, setReview] = useState(null); // ✅ NEW
   const [loading, setLoading] = useState(true);
 
@@ -56,13 +56,42 @@ export default function CompletedBookings() {
         }
 
         if (data.assigned_staff_email) {
-          const { data: staff } = await supabase
-            .from("staff_profile")
-            .select("full_name")
-            .eq("email", data.assigned_staff_email)
-            .single();
+          try {
+            const { data: staff } = await supabase
+              .from("staff_profile")
+              .select("full_name, phone, phone_number")
+              .eq("email", data.assigned_staff_email)
+              .maybeSingle();
 
-          if (staff?.full_name) setStaffName(staff.full_name);
+            if (staff?.full_name) {
+              setStaffDetails({ 
+                name: staff.full_name, 
+                phone: staff.phone || staff.phone_number || "" 
+              });
+            } else {
+              // Fallback to signup just in case
+              const { data: signupStaff } = await supabase
+                .from("signup")
+                .select("full_name, phone, phone_number")
+                .eq("email", data.assigned_staff_email)
+                .maybeSingle();
+              
+              if (signupStaff?.full_name) {
+                setStaffDetails({ 
+                  name: signupStaff.full_name, 
+                  phone: signupStaff.phone || signupStaff.phone_number || "" 
+                });
+              } else {
+                const prefix = data.assigned_staff_email.split("@")[0];
+                setStaffDetails({ 
+                  name: prefix.charAt(0).toUpperCase() + prefix.slice(1), 
+                  phone: "" 
+                });
+              }
+            }
+          } catch (err) {
+            console.error("Staff fetch error:", err);
+          }
         }
       }
 
@@ -130,8 +159,8 @@ export default function CompletedBookings() {
         <p className="section">Staff</p>
         <div className="card">
           <p className="bold">✓ Completed</p>
-          <p>Staff Name: {staffName || "N/A"}</p>
-          <p>Staff Email: {booking.assigned_staff_email}</p>
+          <p>Staff Name: {staffDetails.name || "N/A"}</p>
+          {staffDetails.phone && <p>Staff Mobile: {staffDetails.phone}</p>}
         </div>
 
         <p className="section">Payment</p>
